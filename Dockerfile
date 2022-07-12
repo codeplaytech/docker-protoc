@@ -11,8 +11,8 @@ ENV GOPATH=/gopath/
 # https://developers.google.com/protocol-buffers/docs/reference/go/faq
 RUN git clone https://github.com/cupen/protoactor-go -b master --depth=1 \
     && cd ./protoactor-go/protobuf/protoc-gen-gograinv2 \
-    && go install . \
-    && go install github.com/gogo/protobuf/protoc-gen-gogoslick@v1.3.2 \
+    && make install
+RUN go install github.com/gogo/protobuf/protoc-gen-gogoslick@v1.2.1 \
     && go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 
 
