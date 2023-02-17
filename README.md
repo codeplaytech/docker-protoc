@@ -1,4 +1,9 @@
 # Usage
+```
+docker pull ghcr.io/codeplaytech/protoc:v3.19.6
+```
+
+
 * bash
   ```bash
   docker run --rm -it -v `pwd`:/your-project-name -w /your-project-name cupen/protoc:latest -I=. --gogoslick_out=. shared/*.proto
