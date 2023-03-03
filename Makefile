@@ -9,11 +9,8 @@ build-with-mirror:
 		--network host \
 		--build-arg protoc_url=$(protoc_url_cache) \
 		--build-arg goproxy=https://goproxy.cn,direct \
-		--tag cupen/protoc:$(protoc_image_tag)
+		--tag codeplaytech/protoc:$(protoc_image_tag)
 
-
-push2dockerhub:
-	docker push cupen/protoc:$(protoc_image_tag)
 
 
 serve-mirror:
