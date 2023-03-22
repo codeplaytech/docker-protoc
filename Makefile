@@ -1,4 +1,13 @@
-protoc_version:=3.19.6
+include env
+
+ifndef version 
+$(error Missing variable "version")
+endif
+
+ifndef protoc_version 
+$(error Missing variable "protoc_version")
+endif
+
 protoc_image_tag:=$(protoc_version)-$(shell date +'%Y%m%d')
 protoc_url:=https://github.com/protocolbuffers/protobuf/releases/download/v$(protoc_version)/protoc-$(protoc_version)-linux-x86_64.zip
 protoc_url_cache:=http://127.0.0.1:9527/protoc-$(protoc_version)-linux-x86_64.zip
@@ -28,3 +37,8 @@ start:
 	tmux attach -t dp
 	tmux kill-session -t dp
 
+
+tag:
+	git add env
+	git commit -m "tag: $(version)"
+	git tag $(version)
