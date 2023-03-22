@@ -42,4 +42,6 @@ tag:
 	git add env
 	git commit -m "tag: $(version)"
 	git tag $(version)
-	git push origin master:master --tags
+	git push origin master:master
+	git push origin $(version)
+
