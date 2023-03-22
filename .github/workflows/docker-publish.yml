@@ -64,5 +64,5 @@ jobs:
           push: true 
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          tags: "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ image_tag }}"
+          tags: "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.image_tag }}"
 
