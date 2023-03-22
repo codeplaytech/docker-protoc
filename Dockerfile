@@ -1,4 +1,4 @@
-FROM golang:1.20.1-bullseye AS plugin
+FROM golang:1.20.2-bullseye AS plugin
 
 ARG protoc_version=3.19.6
 ARG protoc_url=https://github.com/protocolbuffers/protobuf/releases/download/v${protoc_version}/protoc-${protoc_version}-linux-x86_64.zip
@@ -8,15 +8,14 @@ ARG repo_name=codeplaytech/protoactor-go
 ENV GOPROXY=${goproxy}
 ENV GOPATH=/gopath/
 
+RUN go install github.com/gogo/protobuf/protoc-gen-gogoslick@v1.3.2 \
+    && go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+
 # install go code generator(compatibility).
 # https://developers.google.com/protocol-buffers/docs/reference/go/faq
 RUN git clone https://github.com/codeplaytech/protoactor-go -b master --depth=1 \
     && cd ./protoactor-go/protobuf/protoc-gen-gograinv2 \
-	&& go build . \
-	&& mv ./protoc-gen-gograinv2 /usr/bin/
-    
-RUN go install github.com/gogo/protobuf/protoc-gen-gogoslick@v1.3.2 \
-    && go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+    && go install .
 
 RUN pwd
 
