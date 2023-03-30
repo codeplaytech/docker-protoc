@@ -31,3 +31,6 @@ proto-grain:
 	sudo rm -fr github_com/
 	sudo rm -fr google/
 ```
+
+# Build
+推送 git tag 即可自动触发 github action 构建
